@@ -25,6 +25,24 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      - name: Setup `packer`
+        uses: hashicorp/setup-packer@main
+        id: setup
+        with:
+          version: ""
+
+      - name: Run `packer init`
+        id: init
+        run: "packer init ./nomad.pkr.hcl"
+
+      - name: Run `packer validate`
+        id: validate
+        run: "packer validate ./nomad.pkr.hcl"
+
+      - name: Build Artifact
+        run: packer build -color=false -on-error=abort ./image.pkr.hcl
+        # env:
+          
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
