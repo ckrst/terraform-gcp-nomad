@@ -27,15 +27,19 @@ source "googlecompute" "nomad" {
   
   image_name                  = "nomad"
   image_description           = "Created with HashiCorp Packer"
-  # ssh_username                = "packer"
+  scopes                      = [
+    "https://www.googleapis.com/auth/userinfo.email",
+    "https://www.googleapis.com/auth/compute",
+    "https://www.googleapis.com/auth/devstorage.full_control"
+  ]
+
+  service_account_email = var.builder_sa
+
+  ssh_username                = "root"
   tags                        = ["packer"]
   # impersonate_service_account = var.builder_sa
 
   metadata = {
-    "use_os_login" = true
-    # ssh key
-
-    "packer" = ""
     "startup_script" = <<EOF
 #! /bin/bash
 apt-get update
