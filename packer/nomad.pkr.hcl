@@ -30,6 +30,13 @@ source "googlecompute" "nomad" {
   ssh_username                = "root"
   tags                        = ["packer"]
   # impersonate_service_account = var.builder_sa
+
+  startup_script = <<EOF
+#! /bin/bash
+apt-get update
+apt-get install -y unzip
+EOF
+
 }
 
 build {
