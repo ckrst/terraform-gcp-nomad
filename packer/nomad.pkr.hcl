@@ -23,10 +23,11 @@ source "googlecompute" "nomad" {
   project_id                  = var.project_id
   source_image_family         = "debian-cloud/debian-11"
   zone                        = var.zone
+  
   image_description           = "Created with HashiCorp Packer"
   ssh_username                = "root"
   tags                        = ["packer"]
-  impersonate_service_account = var.builder_sa
+  service_account_email = var.builder_sa
 }
 
 build {
