@@ -27,7 +27,7 @@ source "googlecompute" "nomad" {
   image_description           = "Created with HashiCorp Packer"
   ssh_username                = "root"
   tags                        = ["packer"]
-  service_account_email = var.builder_sa
+  impersonate_service_account = var.builder_sa
 }
 
 build {
