@@ -53,7 +53,7 @@ jobs:
           PKR_VAR_builder_sa: "${{ vars.PKR_VAR_builder_sa }}"
               
       - name: Build Artifact
-        run: packer build -color=false -on-error=abort packer/nomad.pkr.hcl
+        run: packer build packer/nomad.pkr.hcl
         env:
           GOOGLE_APPLICATION_CREDENTIALS: "./cred.json"
           PKR_VAR_project_id: "${{ vars.PKR_VAR_project_id }}"
