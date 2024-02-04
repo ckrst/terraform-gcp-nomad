@@ -25,7 +25,7 @@ source "googlecompute" "nomad" {
   source_image_family         = "debian-cloud/debian-11"
   zone                        = var.zone
   
-  image_name                  = "Nomad"
+  image_name                  = "nomad"
   image_description           = "Created with HashiCorp Packer"
   ssh_username                = "root"
   tags                        = ["packer"]
