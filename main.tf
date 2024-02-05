@@ -17,8 +17,8 @@ data "google_compute_image" "my_image" {
 }
 
 resource "google_compute_instance_template" "server_instance_template" {
-  name           = "nomad-server-instance-template"
-  machine_type   = "e2-micro"
+  name         = "nomad-server-instance-template"
+  machine_type = "e2-micro"
 
   can_ip_forward = false
 
@@ -36,8 +36,8 @@ resource "google_compute_instance_template" "server_instance_template" {
     foo = "bar"
   }
 
-  metadata_startup_script = "\n echo '\"runlist\":[\"nomad_cookbook\",\"nomad_cookbook[server]\"]' > /tmp/nomad.json \n chef-solo -j /tmp/nomad.json" 
-  
+  metadata_startup_script = "\n echo '\"runlist\":[\"nomad_cookbook\",\"nomad_cookbook[server]\"]' > /tmp/nomad.json \n chef-solo -j /tmp/nomad.json"
+
   service_account {
     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
   }
