@@ -67,7 +67,7 @@ build {
     
     skip_install   = false
     chef_license = "accept-no-persist"
-    execute_command = "{{if .Sudo}}sudo {{end}}chef-solo --chef-license accept-silent -c {{.ConfigPath}} -j {{.ConfigPath}}/node.json"
+    execute_command = "{{if .Sudo}}sudo {{end}}chef-solo --chef-license accept-silent -c {{.ConfigPath}} -j /tmp/packer-chef-solo/node.json"
   }
 }
 
