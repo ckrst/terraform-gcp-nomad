@@ -98,6 +98,10 @@ jobs:
       - name: Terraform Apply
         # if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
         run: terraform apply -auto-approve -input=false
+        env:
+          TF_VAR_google_credentials: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          TF_VAR_google_project: ${{ vars.PKR_VAR_project_id }}
+
       
   destroy:
     if: success()
@@ -112,6 +116,11 @@ jobs:
         uses: hashicorp/setup-terraform@v1
         with:
             cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
       - name: Terraform Destroy
         # if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
         run: terraform destroy -auto-approve -input=false
+        env:
+          TF_VAR_google_credentials: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          TF_VAR_google_project: ${{ vars.PKR_VAR_project_id }}
+        
