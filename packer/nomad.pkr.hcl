@@ -29,14 +29,17 @@ source "googlecompute" "nomad" {
   zone                        = var.zone
   
   image_name                  = "nomad"
+  image_family                = "ckrst"
   image_description           = "Created with HashiCorp Packer"
   scopes                      = [
     "https://www.googleapis.com/auth/userinfo.email",
     "https://www.googleapis.com/auth/compute",
     "https://www.googleapis.com/auth/devstorage.full_control"
   ]
-
   service_account_email = var.builder_sa
+
+  machine_type = "e2-micro"
+  preemptible  = true
 
   ssh_username                = "root"
   tags                        = ["packer"]
