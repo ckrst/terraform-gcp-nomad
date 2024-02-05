@@ -91,7 +91,7 @@ jobs:
         run: terraform plan -input=false
         env:
           TF_VAR_google_credentials: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-          TF_VAR_google_project_id: ${{ vars.PKR_VAR_project_id }}
+          TF_VAR_google_project: ${{ vars.PKR_VAR_project_id }}
 
 
 
