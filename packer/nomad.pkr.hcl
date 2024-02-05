@@ -66,7 +66,7 @@ build {
 
     
     skip_install   = false
-    chef_license = "accept"
+    chef_license = "accept-no-persist"
   }
 }
 
