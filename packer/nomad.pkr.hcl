@@ -72,7 +72,7 @@ build {
 
   provisioner "chef-solo" {
     cookbook_paths = [ "packer/chef/berks-cookbooks" ]
-    run_list       = ["nomad_cookbook"]
+    run_list       = ["nomad_cookbook", "nomad_cookbook[container]"]
     config_template = "packer/chef/config.rb.tmpl"
 
     
