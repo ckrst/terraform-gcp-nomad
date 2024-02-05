@@ -61,13 +61,13 @@ EOF
 build {
   sources = ["sources.googlecompute.nomad"]
 
-  provisioner "shell" {
-    inline = ["mkdir -p /cookbooks"]
-  }
+  # provisioner "shell" {
+  #   inline = ["mkdir -p /cookbooks"]
+  # }
 
   provisioner "file" {
-    source = "packer/chef/berks-cookbooks/nomad_cookbook"
-    destination = "/cookbooks/nomad_cookbook"
+    source = "packer/chef/berks-cookbooks"
+    destination = "/cookbooks"
   }
 
   provisioner "chef-solo" {
