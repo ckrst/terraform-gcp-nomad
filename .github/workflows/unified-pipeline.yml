@@ -92,6 +92,8 @@ jobs:
         env:
           TF_VAR_google_credentials: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
           TF_VAR_google_project: ${{ vars.PKR_VAR_project_id }}
+          TF_VAR_nomad_image_project: ${{ vars.NOMAD_IMAGE_PROJECT }}
+          TF_VAR_nomad_image_family: ${{ vars.NOMAD_IMAGE_FAMILY }}
 
 
 
@@ -101,6 +103,8 @@ jobs:
         env:
           TF_VAR_google_credentials: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
           TF_VAR_google_project: ${{ vars.PKR_VAR_project_id }}
+          TF_VAR_nomad_image_project: ${{ vars.NOMAD_IMAGE_PROJECT }}
+          TF_VAR_nomad_image_family: ${{ vars.NOMAD_IMAGE_FAMILY }}
 
       
   destroy:
