@@ -64,8 +64,8 @@ build {
   }
 
   provisioner "file" {
-    source: "packer/chef/berks-cookbooks/",
-    destination: "/tmp/packer-chef-solo/cookboooks-0/"
+    source = "packer/chef/berks-cookbooks/"
+    destination = "/tmp/packer-chef-solo/cookboooks-0/"
   }
 
   provisioner "chef-solo" {
