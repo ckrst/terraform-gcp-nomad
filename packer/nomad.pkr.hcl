@@ -60,12 +60,12 @@ build {
   sources = ["sources.googlecompute.nomad"]
 
   provisioner "shell" {
-    inline = ["mkdir -p /tmp/packer-chef-solo/cookbooks-0"]
+    inline = ["mkdir -p /tmp/cookbooks"]
   }
 
   provisioner "file" {
     source = "packer/chef/berks-cookbooks/nomad_cookbook"
-    destination = "/tmp/packer-chef-solo/nomad_cookbook"
+    destination = "/tmp/cookbooks/nomad_cookbook"
   }
 
   provisioner "chef-solo" {
@@ -77,7 +77,7 @@ build {
     skip_install   = false
     chef_license = "accept-no-persist"
     execute_command = "{{if .Sudo}}sudo {{end}}chef-solo --chef-license accept-silent -c {{.ConfigPath}} -j /tmp/packer-chef-solo/node.json"
-    remote_cookbook_paths = [ "/tmp/packer-chef-solo/cookbooks-0" ]
+    remote_cookbook_paths = [ "/tmp/cookbooks" ]
     staging_directory = "/tmp/packer-chef-solo"
   }
 }
