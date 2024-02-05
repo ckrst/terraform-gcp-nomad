@@ -68,7 +68,8 @@ build {
     skip_install   = false
     chef_license = "accept-no-persist"
     execute_command = "{{if .Sudo}}sudo {{end}}chef-solo --chef-license accept-silent -c {{.ConfigPath}} -j /tmp/packer-chef-solo/node.json"
-    remote_cookbook_paths = [ "/tmp/packer-chef-solo" ]
+    remote_cookbook_paths = [ "/tmp/packer-chef-solo", "/var/chef" ]
+    staging_directory = "/tmp/packer-chef-solo"
   }
 }
 
