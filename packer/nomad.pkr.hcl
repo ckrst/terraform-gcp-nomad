@@ -63,8 +63,10 @@ build {
     cookbook_paths = [ "packer/chef/berks-cookbooks" ]
     run_list       = ["nomad_cookbook"]
     config_template = "packer/chef/config.rb.tmpl"
+
     
     skip_install   = false
+    chef_license = "accept"
   }
 }
 
