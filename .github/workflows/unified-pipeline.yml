@@ -27,8 +27,8 @@ jobs:
         uses: actionshub/chef-install@main
       
       - name: Install cookbooks
-        run: berks vendor
-        working-directory: packer/chef
+        run: berks vendor -p=./packer/chef
+        # working-directory: ./packer/chef
 
       - name: Setup `packer`
         uses: hashicorp/setup-packer@main
