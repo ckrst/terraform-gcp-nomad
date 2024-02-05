@@ -86,9 +86,14 @@ jobs:
 
       - name: Terraform Format
         run: terraform fmt -check
-
+        
       - name: Terraform Plan
         run: terraform plan -input=false
+        env:
+          TF_VAR_google_credentials: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          TF_VAR_google_project_id: ${{ var.PKR_VAR_project_id }}
+
+
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'

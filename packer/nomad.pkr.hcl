@@ -25,7 +25,6 @@ variable "builder_sa" {
 
 source "googlecompute" "nomad" {
   project_id                  = var.project_id
-  # source_image                  = "debian-8-jessie-v20161027"
   source_image_family         = "ubuntu-2204-lts"
   zone                        = var.zone
   
