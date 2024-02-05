@@ -50,6 +50,7 @@ jobs:
           PKR_VAR_builder_sa: "${{ vars.PKR_VAR_builder_sa }}"
           
   test:
+    if: success()
     runs-on: ubuntu-latest
     defaults:
         run:
@@ -59,6 +60,7 @@ jobs:
         run: echo "Tests"
   
   deploy:
+    if: success()
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -83,6 +85,7 @@ jobs:
         run: terraform apply -auto-approve -input=false
       
   destroy:
+    if: success()
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
