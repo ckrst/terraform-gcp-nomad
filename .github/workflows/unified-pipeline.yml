@@ -23,6 +23,13 @@ jobs:
       - name: Setup cred
         run: echo '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}' > cred.json
 
+      - name: Install chef
+        uses: actionshub/chef-install@main
+      
+      - name: Install cookbooks
+        run: berks install
+        working-directory: packer/chef
+
       - name: Setup `packer`
         uses: hashicorp/setup-packer@main
         id: setup
