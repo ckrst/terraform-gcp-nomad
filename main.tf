@@ -13,7 +13,8 @@ resource "google_compute_instance_group" "instance_group" {
 
 data "google_compute_image" "my_image" {
   family  = var.nomad_image_family
-  project = var.nomad_image_project
+  project = var.google_project
+  name = var.nomad_image_project
 }
 
 resource "google_compute_instance_template" "server_instance_template" {
