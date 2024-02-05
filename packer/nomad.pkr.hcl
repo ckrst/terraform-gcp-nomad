@@ -61,7 +61,7 @@ build {
 
   provisioner "chef-solo" {
     cookbook_paths = [ "packer/chef/berks-cookbooks" ]
-    run_list       = ["nomad"]
+    run_list       = ["nomad-cookbook"]
     skip_install   = false
   }
 }
