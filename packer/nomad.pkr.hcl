@@ -60,7 +60,7 @@ build {
   sources = ["sources.googlecompute.nomad"]
 
   provisioner "chef-solo" {
-    cookbook_paths = [ "packer/chef/berks-cookbooks" ]
+    cookbook_paths = [ "packer/chef/berks-cookbooks ]
     run_list       = ["nomad"]
     skip_install   = false
   }
