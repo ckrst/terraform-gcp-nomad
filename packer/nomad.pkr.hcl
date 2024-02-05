@@ -4,6 +4,10 @@ packer {
       version = ">= 1.1.1"
       source = "github.com/hashicorp/googlecompute"
     }
+    chef = {
+      source  = "github.com/hashicorp/chef"
+      version = ">=1.0.2"
+    }
   }
 }
 
@@ -50,7 +54,15 @@ EOF
 
 }
 
+
+
 build {
   sources = ["sources.googlecompute.nomad"]
+
+  provisioner "chef-solo" {
+    cookbook_paths = [var.cookbook_paths]
+    run_list       = ["nomad"]
+    skip_install   = false
+  }
 }
 

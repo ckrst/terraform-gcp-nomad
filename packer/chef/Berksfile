@@ -1,0 +1,5 @@
+
+source 'https://supermarket.chef.io'
+metadata
+
+cookbook "nomad-cookbook", "~> 0.1.0", git: "https://github.com/ckrst/nomad_cookbook"
