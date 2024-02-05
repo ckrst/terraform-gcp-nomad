@@ -59,6 +59,16 @@ EOF
 build {
   sources = ["sources.googlecompute.nomad"]
 
+  provisioner "shell" {
+    inline = ["mkdir -p /tmp/packer-chef-solo/cookbooks-0"]
+  }
+
+  provisioner "file" {
+    "type": "file",
+    "source": "packer/chef/berks-cookbooks/",
+    "destination": "/tmp/packer-chef-solo/cookboooks-0/"
+  }
+
   provisioner "chef-solo" {
     cookbook_paths = [ "packer/chef/berks-cookbooks" ]
     run_list       = ["nomad_cookbook"]
