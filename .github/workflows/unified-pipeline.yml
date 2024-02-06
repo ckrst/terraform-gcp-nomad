@@ -127,9 +127,20 @@ jobs:
         with:
             cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
+      - name: Download state artifact
+        uses: actions/download-artifact@v4
+        with:
+            name: terraform_resources
+            
+      - name: Terraform Init
+        run: terraform init
+      
+      - name: Move state
+        run: mv terraform_resources .terraform
+
       - name: Terraform Destroy
         # if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
-        run: terraform destroy -auto-approve -input=false
+        run: terraform destroy -auto-approve -input=false -state
         env:
           TF_VAR_google_credentials: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
           TF_VAR_google_project: ${{ vars.PKR_VAR_project_id }}
