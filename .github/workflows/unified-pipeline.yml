@@ -88,14 +88,14 @@ jobs:
         run: terraform fmt -check
         
       - name: Terraform Plan
-        run: terraform plan
+        run: terraform plan -out=plan
         env:
           TF_VAR_google_credentials: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
           TF_VAR_google_project: ${{ vars.PKR_VAR_project_id }}
           TF_VAR_nomad_image_project: ${{ vars.NOMAD_IMAGE_PROJECT }}
           TF_VAR_suffix: ${{ vars.SUFFIX }}
 
-
+      
 
       - name: Terraform Apply
         # if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
@@ -105,6 +105,12 @@ jobs:
           TF_VAR_google_project: ${{ vars.PKR_VAR_project_id }}
           TF_VAR_nomad_image_project: ${{ vars.NOMAD_IMAGE_PROJECT }}
           TF_VAR_suffix: ${{ vars.SUFFIX }}
+
+      - uses: actions/upload-artifact@master
+        name: Publish state
+        with:
+            name: terraform_resources
+            path: ./.terraform
 
       
   destroy:
