@@ -88,23 +88,23 @@ jobs:
         run: terraform fmt -check
         
       - name: Terraform Plan
-        run: terraform plan -input=false
+        run: terraform plan
         env:
           TF_VAR_google_credentials: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
           TF_VAR_google_project: ${{ vars.PKR_VAR_project_id }}
           TF_VAR_nomad_image_project: ${{ vars.NOMAD_IMAGE_PROJECT }}
-          TF_VAR_nomad_image_family: ${{ vars.NOMAD_IMAGE_FAMILY }}
+          TF_VAR_suffix: ${{ vars.SUFFIX }}
 
 
 
       - name: Terraform Apply
         # if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
-        run: terraform apply -auto-approve -input=false
+        run: terraform apply -auto-approve
         env:
           TF_VAR_google_credentials: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
           TF_VAR_google_project: ${{ vars.PKR_VAR_project_id }}
           TF_VAR_nomad_image_project: ${{ vars.NOMAD_IMAGE_PROJECT }}
-          TF_VAR_nomad_image_family: ${{ vars.NOMAD_IMAGE_FAMILY }}
+          TF_VAR_suffix: ${{ vars.SUFFIX }}
 
       
   destroy:

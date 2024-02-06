@@ -6,3 +6,7 @@ variable "google_default_zone" { default = "us-central1-a" }
 
 variable "nomad_image_family" { default = "" }
 variable "nomad_image_project" {}
+
+variable "suffix" {
+  default = "-D001"
+}
