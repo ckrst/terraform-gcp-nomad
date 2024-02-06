@@ -11,10 +11,10 @@ resource "google_compute_instance_group" "instance_group" {
   #   network     = google_compute_network.default.id
 }
 
-data "google_compute_image" "my_image" {
-  family  = var.nomad_image_family
-  project = var.google_project
-  name    = var.nomad_image_project
+data "google_compute_image" "nomad_image" {
+  #   family  = var.nomad_image_family
+  #   project = var.google_project
+  name = var.nomad_image_project
 }
 
 resource "google_compute_instance_template" "server_instance_template" {
@@ -26,7 +26,7 @@ resource "google_compute_instance_template" "server_instance_template" {
   tags = ["foo", "bar"]
 
   disk {
-    source_image = data.google_compute_image.my_image.id
+    source_image = data.google_compute_image.nomad_image.id
   }
 
   network_interface {
